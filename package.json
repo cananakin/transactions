@@ -2,9 +2,9 @@
   "name": "transactions-reports",
   "version": "1.0.0",
   "scripts": {
-    "heroku-postbuild":"ng build --prod",
+    "heroku-postbuild": "ng build --prod",
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -16,12 +16,13 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "~10.1.0",
-    "@angular/compiler-cli": "~10.1.0",
+    "@angular-devkit/build-angular": "~0.1001.0",
     "@angular/animations": "~10.1.0",
     "@angular/cdk": "^10.2.0",
+    "@angular/cli": "~10.1.0",
     "@angular/common": "~10.1.0",
     "@angular/compiler": "~10.1.0",
+    "@angular/compiler-cli": "~10.1.0",
     "@angular/core": "~10.1.0",
     "@angular/flex-layout": "^10.0.0-beta.32",
     "@angular/forms": "~10.1.0",
@@ -32,11 +33,11 @@
     "@angular/router": "~10.1.0",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "bootstrap": "^4.5.0",
+    "express": "^4.17.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2",
     "typescript": "~4.0.2",
-    "@angular-devkit/build-angular": "~0.1001.0"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.0",
