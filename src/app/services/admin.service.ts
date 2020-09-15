@@ -34,19 +34,19 @@ export class AdminService {
 
   transtionList(data): Observable<any> {
     
-    return this.http.post(this.httpUrl + '/api/v3/transaction/list',data, this.options );
+    return this.http.post('/api/v3/transaction/list',data, this.options );
       
   }
   
   transtion(data): Observable<any> {
     
-    return this.http.post(this.httpUrl + '/api/v3/transaction',data, this.options );
+    return this.http.post('/api/v3/transaction',data, this.options );
       
   }
 
   clients(data): Observable<any> {
     
-    return this.http.post(this.httpUrl + '/api/v3/client',data, this.options );
+    return this.http.post('/api/v3/client',data, this.options );
       
   }
 }
