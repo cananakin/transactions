@@ -1,5 +1,9 @@
+.transactions {
+  margin-bottom: 30px;
+}
+
 .responsable-table {
-  height: 300px;
+  height: 390px;
   width: 2550px;
   max-width: 100%;
   overflow: auto;

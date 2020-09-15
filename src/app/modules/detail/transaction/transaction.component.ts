@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-transaction',
@@ -17,6 +18,7 @@ export class TransactionComponent implements OnInit {
     private token: TokenStorageService,
     private router: Router,
     private route: ActivatedRoute,
+    private _location: Location
   ) { 
     this.route.params.subscribe(params => {
       this.transId = params['id'];
@@ -38,6 +40,10 @@ export class TransactionComponent implements OnInit {
         }
       }
     )
+  }
+
+  goBack () {
+    this._location.back();
   }
 
 }

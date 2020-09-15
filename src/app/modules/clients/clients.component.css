@@ -1,3 +1,17 @@
-table {
-    width: 100%;
+.client {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+h3 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-weight: 600;
+}
+
+strong {
+    margin-left: 30px;
+    color: #444;
+    width: 120px;
+    display: inline-block;
 }

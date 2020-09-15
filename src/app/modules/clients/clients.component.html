@@ -1,41 +1,50 @@
-<div>
-  <h2>Client</h2>
-  <div>
-    <div>Id : {{ client?.customerInfo?.id }}</div>
-    <div>Email : {{ client?.customerInfo?.email }}</div>
-    <div>Number : {{ client?.customerInfo?.number }}</div>
-    <div>Expiry Month : {{ client?.customerInfo?.expiryMonth }}</div>
-    <div>Expiry Year : {{ client?.customerInfo?.expiryYear }}</div>
-    <div>Start Month : {{ client?.customerInfo?.startMonth }}</div>
-    <div>Issue Number : {{ client?.customerInfo?.issueNumber }}</div>
-    <div>Birthday : {{ client?.customerInfo?.birthday }}</div>
-    <div>Gender : {{ client?.customerInfo?.gender }}</div>
-    
-    <h3><strong>Billing Info</strong></h3>
-    <div>Billing Title : {{ client?.customerInfo?.billingTitle }}</div>
-    <div>Billing FirstName : {{ client?.customerInfo?.billingFirstName }}</div>
-    <div>BillingLastName : {{ client?.customerInfo?.billingLastName }}</div>
-    <div>BillingCompany : {{ client?.customerInfo?.billingCompany }}</div>
-    <div>BillingAddress1 : {{ client?.customerInfo?.billingAddress1 }}</div>
-    <div>BillingAddress2 : {{ client?.customerInfo?.billingAddress2 }}</div>
-    <div>BillingCity : {{ client?.customerInfo?.billingCity }}</div>
-    <div>BillingPostcode : {{ client?.customerInfo?.billingPostcode }}</div>
-    <div>BillingCountry : {{ client?.customerInfo?.billingCountry }}</div>
-    <div>BillingPhone : {{ client?.customerInfo?.billingPhone }}</div>
-    <div>BillingFax : {{ client?.customerInfo?.billingFax }}</div>
-    
-    <h3><strong>Shipping Info</strong></h3>
-    <div>ShippingTitle : {{ client?.customerInfo?.shippingTitle }}</div>
-    <div>ShippingFirstName : {{ client?.customerInfo?.shippingFirstName }}</div>
-    <div>ShippingLastName : {{ client?.customerInfo?.shippingLastName }}</div>
-    <div>ShippingCompany : {{ client?.customerInfo?.shippingCompany }}</div>
-    <div>ShippingAddress1 : {{ client?.customerInfo?.shippingAddress1 }}</div>
-    <div>ShippingAddress2 : {{ client?.customerInfo?.shippingAddress2 }}</div>
-    <div>ShippingCity : {{ client?.customerInfo?.shippingCity }}</div>
-    <div>ShippingPostcode : {{ client?.customerInfo?.shippingPostcode }}</div>
-    <div>ShippingState : {{ client?.customerInfo?.shippingState }}</div>
-    <div>ShippingCountry : {{ client?.customerInfo?.shippingCountry }}</div>
-    <div>ShippingPhone : {{ client?.customerInfo?.shippingPhone }}</div>
-    <div>ShippingFax : {{ client?.customerInfo?.shippingFax }}</div>
-  </div> 
+<div fxLayout="row" fxLayoutAlign="space-between center" (click)="goBack()">
+  <h1>
+    Client Info - {{transId}}
+  </h1>
+  <button mat-raised-button color="primary">
+    <mat-icon>chevron_left</mat-icon> Back
+  </button>
+</div>
+<mat-divider></mat-divider>
+<div class="client">
+  <div><strong>Id : </strong> {{ client?.customerInfo?.id }}</div>
+  <div><strong>Email : </strong>{{ client?.customerInfo?.email }}</div>
+  <div><strong>Number : </strong>{{ client?.customerInfo?.number }}</div>
+  <div><strong>Expiry Month : </strong>{{ client?.customerInfo?.expiryMonth }}</div>
+  <div><strong>Expiry Year : </strong>{{ client?.customerInfo?.expiryYear }}</div>
+  <div><strong>Start Month : </strong>{{ client?.customerInfo?.startMonth }}</div>
+  <div><strong>Issue Number : </strong>{{ client?.customerInfo?.issueNumber }}</div>
+  <div><strong>Birthday : </strong>{{ client?.customerInfo?.birthday }}</div>
+  <div><strong>Gender : </strong>{{ client?.customerInfo?.gender }}</div>
+
+  <h3>Billing Info</h3>
+
+  <div><strong>Title : </strong> {{ client?.customerInfo?.billingTitle }}</div>
+  <div><strong>First Name : </strong> {{ client?.customerInfo?.billingFirstName }}</div>
+  <div><strong>Last Name :</strong> {{ client?.customerInfo?.billingLastName }}</div>
+  <div><strong>Company : </strong> {{ client?.customerInfo?.billingCompany }}</div>
+  <div><strong>Address1 : </strong> {{ client?.customerInfo?.billingAddress1 }}</div>
+  <div><strong>Address2 : </strong> {{ client?.customerInfo?.billingAddress2 }}</div>
+  <div><strong>City : </strong> {{ client?.customerInfo?.billingCity }}</div>
+  <div><strong>Postcode : </strong> {{ client?.customerInfo?.billingPostcode }}</div>
+  <div><strong>Country : </strong> {{ client?.customerInfo?.billingCountry }}</div>
+  <div><strong>Phone : </strong> {{ client?.customerInfo?.billingPhone }}</div>
+  <div><strong>Fax : </strong> {{ client?.customerInfo?.billingFax }}</div>
+
+  <h3>Shipping Info</h3>
+
+  <div><strong>Title : </strong>  {{ client?.customerInfo?.shippingTitle }}</div>
+  <div><strong>First Name : </strong> {{ client?.customerInfo?.shippingFirstName }}</div>
+  <div><strong>Last Name : </strong> {{ client?.customerInfo?.shippingLastName }}</div>
+  <div><strong>Company : </strong> {{ client?.customerInfo?.shippingCompany }}</div>
+  <div><strong>Address 1 : </strong> {{ client?.customerInfo?.shippingAddress1 }}</div>
+  <div><strong>Address 2 : </strong> {{ client?.customerInfo?.shippingAddress2 }}</div>
+  <div><strong>City : </strong> {{ client?.customerInfo?.shippingCity }}</div>
+  <div><strong>Postcode : </strong> {{ client?.customerInfo?.shippingPostcode }}</div>
+  <div><strong>State : </strong> {{ client?.customerInfo?.shippingState }}</div>
+  <div><strong>Country : </strong> {{ client?.customerInfo?.shippingCountry }}</div>
+  <div><strong>Phone : </strong> {{ client?.customerInfo?.shippingPhone }}</div>
+  <div><strong>Fax : </strong> {{ client?.customerInfo?.shippingFax }}</div>
+
 </div>

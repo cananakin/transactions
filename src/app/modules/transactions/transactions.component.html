@@ -1,4 +1,4 @@
-<div>
+<div class="transactions">
   <h2>Transactions</h2>
   <form fxLayout="row wrap" fxLayoutGap="30px" [formGroup]="myGroup" (ngSubmit)="querySubmit()"
     style="margin-bottom: 20px;">
@@ -224,7 +224,7 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: 1"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
@@ -237,7 +237,7 @@
   </div>
   <div *ngIf="!isLoading" fxLayout="row" fxLayoutAlign="space-between center" style="margin-top: 20px;">
     <div>
-      <strong *ngIf="length">Page: {{ current_page }} , {{from}} - {{to}} of {{length}} </strong>
+      <strong *ngIf="length">Page: {{ current_page }} , {{from}} - {{to}} </strong>
     </div>
     <div>
       <button *ngIf="previousPage" mat-raised-button color="primary" (click)="previousPageHandle()" style="width: 125px; margin-right: 15px;">
@@ -249,7 +249,7 @@
       </button>
     </div>
   </div>
-  <mat-card *ngIf="!isLoading && length === 0" fxLayoutAlign="center center" style="min-height: 200px">
+  <mat-card *ngIf="!isLoading && length === 0" fxLayoutAlign="center center" style="min-height: 380px">
     <p>There isn't any data!</p>
   </mat-card>
 </div>
