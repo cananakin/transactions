@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 const httpHeaders = new HttpHeaders({
   'Content-Type': 'application/json',
-  "Access-Control-Allow-Origin": '*'
+  "Access-Control-Allow-Origin": 'https://sandbox-reporting.rpdpymnt.com'
 });
 
 const options = { headers: httpHeaders };
