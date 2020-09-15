@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 const httpHeaders = new HttpHeaders({
   'Content-Type': 'application/json',
+  "Access-Control-Allow-Origin": '*'
 });
 
 const options = { headers: httpHeaders };

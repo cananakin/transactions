@@ -13,6 +13,7 @@ export class AdminService {
   httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
     "Access-Control-Allow-Origin": '*'
+    
     //'Authorization': 'Bearer '+ this.token.getToken()
   });
   
