@@ -2,13 +2,18 @@ const express = require('express');
 
 const app = express();
 
-app.use(express.static('./dist/transactions'));
+const port = 3001;
 
-app.get('/*', function (req, res) {
-  res.sendFile('index.html', { root: 'dist/transactions' }
-  );
-});
+app.get("/", (req, res) => {
+    // read query parameters
+    // craft IEX API URL
+    const url = `https://sandbox-reporting.rpdpymnt.com`;
+  
+    // make request to IEX API and forward response
+    request(url).pipe(res);
+  });
 
-app.listen(process.env.PORT || 8080);
 
-console.log(`Running on port ${process.env.PORT || 8080}`)
+app.listen(port);
+
+console.log(`Running on port `)
