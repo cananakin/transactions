@@ -19,7 +19,7 @@ export class AuthServiceService {
 
   login(data): Observable<any> {
     
-    return this.http.post('/api/v3/merchant/user/login',data, options );
+    return this.http.post(this.httpUrl + '/api/v3/merchant/user/login',data, options );
       
   }
 
