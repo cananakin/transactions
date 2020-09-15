@@ -3,10 +3,10 @@ const path = require('path');
 const app = express();
 
 
-app.use(express.static(__dirname + '/dist/transactions'));
+app.use(express.static(__dirname + '/dist/my-app'));
 
 app.get('/*', function (req, res) {
-  res.sendFile(__dirname + '/dist/transactions/index.html'
+  res.sendFile(__dirname + '/dist/my-app/index.html'
   );
 });
 
