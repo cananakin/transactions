@@ -2,7 +2,7 @@
   "name": "transactions-reports",
   "version": "1.0.0",
   "scripts": {
-    "heroku-postbuild":"ng build --prod  --proxy-config proxy.conf.json",
+    "heroku-postbuild":"ng build --prod",
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",

@@ -13,12 +13,12 @@ const options = { headers: httpHeaders };
 })
 
 export class AuthServiceService {
-
+  httpUrl = 'https://sandbox-reporting.rpdpymnt.com';
   constructor(private http: HttpClient) { }
 
   login(data): Observable<any> {
     
-    return this.http.post('/api/v3/merchant/user/login',data, options );
+    return this.http.post(this.httpUrl + '/api/v3/merchant/user/login',data, options );
       
   }
 
