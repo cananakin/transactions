@@ -1,0 +1,25 @@
+<mat-toolbar fxLayout color="primary" >Login Page</mat-toolbar>
+<form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="myGroup" (ngSubmit)="loginProcess()">
+    <mat-form-field>
+        <input matInput formControlName="email" type="email" placeholder="Email" />
+        <mat-error *ngIf="myGroup.get('email').hasError('email') && !myGroup.get('email').hasError('required')">
+            Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="myGroup.get('email').hasError('required')">
+            Email is <strong>required</strong>
+            </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput formControlName="password" type="password" placeholder="Password" />
+        <mat-error *ngIf="myGroup.get('password').hasError('required')">
+            Password is <strong>required</strong>
+            </mat-error>
+    </mat-form-field>
+    <div class="alert-danger" *ngIf="isLoginFailed">
+        {{ errorMessage }}
+    </div>
+    
+    <button [class.spinner]="loading" [disabled]="loading" mat-raised-button type="submit" class="mt-5" color="primary">
+        LOGIN
+    </button>
+</form>

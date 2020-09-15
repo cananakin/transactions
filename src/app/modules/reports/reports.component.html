@@ -1,0 +1,73 @@
+<div>
+  <h2>Reports</h2>
+  <form fxLayout="row wrap" fxLayoutGap="30px" [formGroup]="myGroup" (ngSubmit)="querySubmit()" style="margin-bottom: 20px;">
+      <div>
+        <mat-form-field>
+          <mat-label>From Date</mat-label>
+          <input matInput type="date" formControlName="fromDate" >
+        </mat-form-field>
+      </div>
+      <div >
+        <mat-form-field>
+          <mat-label>To Date</mat-label>
+          <input matInput type="date" formControlName="toDate">
+        </mat-form-field>
+      </div>
+      <div >
+        <mat-form-field>
+          <mat-label>Merchant</mat-label>
+          <input matInput type="text" formControlName="merchant">
+        </mat-form-field>
+      </div>
+      <div >
+        <mat-form-field>
+          <mat-label>Acquirer</mat-label>
+          <input matInput type="text" formControlName="acquirer">
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button color="primary" type="submit" [class.spinner]="loadingFilterButton"
+        [disabled]="loadingFilterButton">
+          <mat-icon>search</mat-icon> Filter</button>
+      </div>
+  </form>
+  <div *ngIf="length" class="responsable-table mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="count" >
+        <th mat-header-cell *matHeaderCellDef> Count </th>
+        <td mat-cell *matCellDef="let element"> {{element?.count}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef> Total </th>
+        <td mat-cell *matCellDef="let element"> {{element?.total}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef> Currency </th>
+        <td mat-cell *matCellDef="let element"> {{element.currency}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <div *ngIf="!isLoading" fxLayout="row" fxLayoutAlign="space-between center" style="margin-top: 20px;">
+    <div>
+      <strong *ngIf="length">Page: {{ current_page }} , {{from}} - {{to}} of {{length}} </strong>
+    </div>
+    <div>
+      <button *ngIf="previousPage" mat-raised-button color="primary" (click)="previousPageHandle()" style="width: 125px; margin-right: 15px;">
+        <mat-icon>chevron_left</mat-icon> Previous
+      </button>
+
+      <button *ngIf="nextPage" mat-raised-button color="primary" (click)="nextPageHandle()" style="width: 125px;">
+        <mat-icon>chevron_right</mat-icon> Next
+      </button>
+    </div>
+  </div>
+  <mat-card *ngIf="!isLoading && length === 0" fxLayoutAlign="center center" style="min-height: 200px">
+    <p>There isn't any data!</p>
+  </mat-card>
+</div>

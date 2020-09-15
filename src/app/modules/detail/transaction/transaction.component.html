@@ -1,0 +1,76 @@
+<div>Transaction Info > {{transId}}</div>
+<mat-divider></mat-divider>
+<div>
+    <h2>FX information</h2>
+    <div fxLayout="flex" fxGap="30px">
+        <div>OriginalAmount : {{ transaction?.fx?.merchant?.originalAmount }}</div>
+        <div>Original Currency : {{ transaction?.fx?.merchant?.originalCurrency }}</div>
+    </div>
+    <mat-divider></mat-divider>
+    <h2>Customer Info</h2>
+    <div>Id : {{ transaction?.customerInfo?.id }}</div>
+    <div>Email : {{ transaction?.customerInfo?.email }}</div>
+    <div>Number : {{ transaction?.customerInfo?.number }}</div>
+    <div>Expiry Month : {{ transaction?.customerInfo?.expiryMonth }}</div>
+    <div>Expiry Year : {{ transaction?.customerInfo?.expiryYear }}</div>
+    <div>Start Month : {{ transaction?.customerInfo?.startMonth }}</div>
+    <div>Issue Number : {{ transaction?.customerInfo?.issueNumber }}</div>
+    <div>Birthday : {{ transaction?.customerInfo?.birthday }}</div>
+    <div>Gender : {{ transaction?.customerInfo?.gender }}</div>
+    
+    <h3><strong>Billing Info</strong></h3>
+    <div>Billing Title : {{ transaction?.customerInfo?.billingTitle }}</div>
+    <div>Billing FirstName : {{ transaction?.customerInfo?.billingFirstName }}</div>
+    <div>BillingLastName : {{ transaction?.customerInfo?.billingLastName }}</div>
+    <div>BillingCompany : {{ transaction?.customerInfo?.billingCompany }}</div>
+    <div>BillingAddress1 : {{ transaction?.customerInfo?.billingAddress1 }}</div>
+    <div>BillingAddress2 : {{ transaction?.customerInfo?.billingAddress2 }}</div>
+    <div>BillingCity : {{ transaction?.customerInfo?.billingCity }}</div>
+    <div>BillingPostcode : {{ transaction?.customerInfo?.billingPostcode }}</div>
+    <div>BillingCountry : {{ transaction?.customerInfo?.billingCountry }}</div>
+    <div>BillingPhone : {{ transaction?.customerInfo?.billingPhone }}</div>
+    <div>BillingFax : {{ transaction?.customerInfo?.billingFax }}</div>
+    
+    <h3><strong>Shipping Info</strong></h3>
+    <div>ShippingTitle : {{ transaction?.customerInfo?.shippingTitle }}</div>
+    <div>ShippingFirstName : {{ transaction?.customerInfo?.shippingFirstName }}</div>
+    <div>ShippingLastName : {{ transaction?.customerInfo?.shippingLastName }}</div>
+    <div>ShippingCompany : {{ transaction?.customerInfo?.shippingCompany }}</div>
+    <div>ShippingAddress1 : {{ transaction?.customerInfo?.shippingAddress1 }}</div>
+    <div>ShippingAddress2 : {{ transaction?.customerInfo?.shippingAddress2 }}</div>
+    <div>ShippingCity : {{ transaction?.customerInfo?.shippingCity }}</div>
+    <div>ShippingPostcode : {{ transaction?.customerInfo?.shippingPostcode }}</div>
+    <div>ShippingState : {{ transaction?.customerInfo?.shippingState }}</div>
+    <div>ShippingCountry : {{ transaction?.customerInfo?.shippingCountry }}</div>
+    <div>ShippingPhone : {{ transaction?.customerInfo?.shippingPhone }}</div>
+    <div>ShippingFax : {{ transaction?.customerInfo?.shippingFax }}</div>
+    
+    <mat-divider></mat-divider>
+    <h2>Acquirer Transaction Info</h2>
+    <div>Acquirer Transaction Id : {{ transaction?.transaction.merchant?.acquirerTransactionId }}</div>
+    <div>Code : {{ transaction?.transaction.merchant?.code }}</div>
+    <h4>Merchant Info</h4>
+    <div>Merchant Id : {{ transaction?.transaction.merchant?.merchantId }}</div>
+    <div>Name : {{ transaction?.merchant?.name }}</div>
+    
+    <mat-divider></mat-divider>
+    <h2>Merchant Transaction Info</h2>
+    <div>Merchant Id : {{ transaction?.transaction.merchant?.id }}</div>
+    <div>Merchant Reference No : {{ transaction?.transaction.merchant?.referenceNo }}</div>
+    <div>Status : {{ transaction?.transaction.merchant?.status }}</div>
+    <div>Channel : {{ transaction?.transaction.merchant?.channel }}</div>
+    <div>Custom Data : {{ transaction?.transaction.merchant?.customData }}</div>
+    <div>Chain Id : {{ transaction?.transaction.merchant?.chainId }}</div>
+    <div>Operation : {{ transaction?.transaction.merchant?.operation }}</div>
+    <div>Fx Transaction Id : {{ transaction?.transaction.merchant?.fxTransactionId }}</div>
+    <div>Created_Date : {{ transaction?.transaction.merchant?.created_at }}</div>
+    <div>Updated Date : {{ transaction?.transaction.merchant?.updated_at }}</div>
+    <div>Message : {{ transaction?.transaction.merchant?.message }}</div>
+    <div>Transaction Id : {{ transaction?.transaction.merchant?.transactionId }}</div>
+    <h3><strong>Agent Info</strong> </h3>
+    <div>Id : {{ transaction?.transaction.merchant.agent?.id }}</div>
+    <div>Customer Ip : {{ transaction?.transaction.merchant.agent?.customerIp }}</div>
+    <div>Customer User Agent : {{ transaction?.transaction.merchant.agent?.customerUserAgent }}</div>
+    <div>Merchant Ip : {{ transaction?.transaction.merchant.agent?.merchantIp }}</div>
+    <div>Merchant User Agent : {{ transaction?.transaction.merchant.agent?.merchantUserAgent }}</div>
+</div>

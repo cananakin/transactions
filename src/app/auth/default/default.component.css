@@ -1,0 +1,6 @@
+.main-div mat-card {
+    padding: 0;
+}
+mat-toolbar {
+    padding: 10px 20px;
+}

@@ -1,0 +1,255 @@
+<div>
+  <h2>Transactions</h2>
+  <form fxLayout="row wrap" fxLayoutGap="30px" [formGroup]="myGroup" (ngSubmit)="querySubmit()"
+    style="margin-bottom: 20px;">
+    <div>
+      <mat-form-field>
+        <mat-label>From Date</mat-label>
+        <input matInput type="date" formControlName="fromDate">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>To Date</mat-label>
+        <input matInput type="date" formControlName="toDate">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Operation</mat-label>
+        <mat-select formControlName="operation">
+          <mat-option value="DIRECT">DIRECT</mat-option>
+          <mat-option value="REFUND">REFUND</mat-option>
+          <mat-option value="3D">3D</mat-option>
+          <mat-option value="3DAUTH">3DAUTH</mat-option>
+          <mat-option value="STORED">STORED</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Merchant Id</mat-label>
+        <input matInput type="number" formControlName="merchantId">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Acquirer Id</mat-label>
+        <input matInput type="text" formControlName="acquirerId">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Payment Method</mat-label>
+        <mat-select formControlName="paymentMethod">
+          <mat-option value="CREDITCARD">CREDITCARD</mat-option>
+          <mat-option value="CUP">CUP</mat-option>
+          <mat-option value="IDEAL">IDEAL</mat-option>
+          <mat-option value="GIROPAY">GIROPAY</mat-option>
+          <mat-option value="MISTERCASH">MISTERCASH</mat-option>
+          <mat-option value="STORED">STORED</mat-option>
+          <mat-option value="PAYTOCARD">PAYTOCARD</mat-option>
+          <mat-option value="CEPBANK">CEPBANK</mat-option>
+          <mat-option value="CITADEL">CITADEL</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Error Code</mat-label>
+        <mat-select formControlName="errorCode">
+          <mat-option value="Do not hono">Do not hono</mat-option>
+          <mat-option value="Invalid Transaction">Invalid Transaction</mat-option>
+          <mat-option value="Invalid Card">Invalid Card</mat-option>
+          <mat-option value="Not sufficient funds">Not sufficient funds</mat-option>
+          <mat-option value="Incorrect PIN">Incorrect PIN</mat-option>
+          <mat-option value="Invalid country association">Invalid country association</mat-option>
+          <mat-option value="Currency not allowed">Currency not allowed</mat-option>
+          <mat-option value="3-D Secure Transport Error">3-D Secure Transport Error</mat-option>
+          <mat-option value="Transaction not permitted to cardholder">Transaction not permitted to cardholder
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Filter Field</mat-label>
+        <mat-select formControlName="filterField">
+          <mat-option value="Transaction UUID">Transaction UUID</mat-option>
+          <mat-option value="Customer Email">Customer Email</mat-option>
+          <mat-option value="Reference No">Reference No</mat-option>
+          <mat-option value="Custom Data">Custom Data</mat-option>
+          <mat-option value="Card PAN">Card PAN</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Filter Value</mat-label>
+        <input matInput type="text" formControlName="filterValue">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="APPROVED">APPROVED</mat-option>
+          <mat-option value="WAITING">WAITING</mat-option>
+          <mat-option value="DECLINED">DECLINED</mat-option>
+          <mat-option value="ERROR">ERROR</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" type="submit" [class.spinner]="loadingFilterButton"
+        [disabled]="loadingFilterButton">
+        <mat-icon>search</mat-icon> Filter
+      </button>
+    </div>
+  </form>
+  <div *ngIf="length && !isLoading" class="responsable-table mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="fxMerchantOriginalAmount" sticky>
+        <th mat-header-cell *matHeaderCellDef> Original Amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.fx.merchant?.originalAmount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fxMerchantOriginalCurrency">
+        <th mat-header-cell *matHeaderCellDef> Original Currency </th>
+        <td mat-cell *matCellDef="let element"> {{element.fx.merchant?.originalCurrency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="customerInfoNumber">
+        <th mat-header-cell *matHeaderCellDef> Customer No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.customerInfo?.number}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="customerInfoEmail">
+        <th mat-header-cell *matHeaderCellDef> Customer Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.customerInfo?.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="customerInfoBillingFirstName">
+        <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.customerInfo?.billingFirstName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="customerInfoBillingLastName">
+        <th mat-header-cell *matHeaderCellDef> Customer Last Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.customerInfo?.billingLastName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="merchantId">
+        <th mat-header-cell *matHeaderCellDef> Merchant Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.merchant?.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="merchantName">
+        <th mat-header-cell *matHeaderCellDef> Merchant Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.merchant?.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ipnReceived">
+        <th mat-header-cell *matHeaderCellDef> Ipn Received </th>
+        <td mat-cell *matCellDef="let element"> {{element.ipn?.received }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="transactionMerchantReferenceNo">
+        <th mat-header-cell *matHeaderCellDef> Transaction Merchant Ref. No </th>
+        <td mat-cell *matCellDef="let element"> {{element.transaction.merchant?.referenceNo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="transactionMerchantStatus">
+        <th mat-header-cell *matHeaderCellDef> Transaction Merchant Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.transaction.merchant?.status}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="transactionMerchantOperation">
+        <th mat-header-cell *matHeaderCellDef> Transaction Merchant Operation </th>
+        <td mat-cell *matCellDef="let element"> {{element.transaction.merchant?.operation}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="transactionMerchantMessage">
+        <th mat-header-cell *matHeaderCellDef> Transaction Merchant Message </th>
+        <td mat-cell *matCellDef="let element"> {{element.transaction.merchant?.message}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="transactionMerchantCreated_at">
+        <th mat-header-cell *matHeaderCellDef> Transaction Merchant Created_at </th>
+        <td mat-cell *matCellDef="let element"> {{element.transaction.merchant?.created_at}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="transactionMerchantTransactionId">
+        <th mat-header-cell *matHeaderCellDef> Transaction Merchant Trans. Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.transaction.merchant?.transactionId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acquirerId">
+        <th mat-header-cell *matHeaderCellDef> Acquirer Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.acquirer?.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acquirerName">
+        <th mat-header-cell *matHeaderCellDef> Acquirer Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.acquirer?.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acquirerCode">
+        <th mat-header-cell *matHeaderCellDef> Acquirer Code </th>
+        <td mat-cell *matCellDef="let element"> {{element.acquirer?.code}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acquirerType">
+        <th mat-header-cell *matHeaderCellDef> Acquirer Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.acquirer?.type}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="refundable">
+        <th mat-header-cell *matHeaderCellDef> Refundable </th>
+        <td mat-cell *matCellDef="let element"> {{element.refundable}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="star" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef>Detail</th>
+        <td mat-cell *matCellDef="let element">
+          <button matTooltip="Transaction Info" mat-mini-fab color="primary"
+            (click)="detailTransaction(element.transaction.merchant?.transactionId)">
+            <mat-icon>assignment</mat-icon>
+          </button>
+          <button matTooltip="Client Info" style="margin-left: 20px;" mat-mini-fab color="primary"
+            (click)="clientTransaction(element.transaction.merchant?.transactionId)">
+            <mat-icon>assignment_ind</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <div *ngIf="isLoading" 
+    style="display: flex; justify-content: center; align-items: center; background:rgba(250, 250, 250, 0.5);">
+    <mat-progress-spinner 
+      color="primary" 
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+  <div *ngIf="!isLoading" fxLayout="row" fxLayoutAlign="space-between center" style="margin-top: 20px;">
+    <div>
+      <strong *ngIf="length">Page: {{ current_page }} , {{from}} - {{to}} of {{length}} </strong>
+    </div>
+    <div>
+      <button *ngIf="previousPage" mat-raised-button color="primary" (click)="previousPageHandle()" style="width: 125px; margin-right: 15px;">
+        <mat-icon>chevron_left</mat-icon> Previous
+      </button>
+
+      <button *ngIf="nextPage" mat-raised-button color="primary" (click)="nextPageHandle()" style="width: 125px;">
+        <mat-icon>chevron_right</mat-icon> Next
+      </button>
+    </div>
+  </div>
+  <mat-card *ngIf="!isLoading && length === 0" fxLayoutAlign="center center" style="min-height: 200px">
+    <p>There isn't any data!</p>
+  </mat-card>
+</div>

@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="toggleSideBar()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>Transaction</span>
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <button mat-icon-button >
+                <mat-icon>settings</mat-icon>
+            </button>
+            <button mat-icon-button >
+                <mat-icon>help_outline</mat-icon>
+            </button>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>person_outline</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="signOut()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Sign Out</span>
+                </button>
+            </mat-menu>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

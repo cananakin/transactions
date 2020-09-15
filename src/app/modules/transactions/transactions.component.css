@@ -1,0 +1,49 @@
+.responsable-table {
+  height: 300px;
+  width: 2550px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+table {
+  width: 900px;
+}
+
+td.mat-column-star {
+  width: 20px;
+  padding-right: 8px;
+}
+
+th {
+  min-width: 150px;
+}
+
+th.mat-column-fxMerchantOriginalCurrency,
+td.mat-column-fxMerchantOriginalCurrency {
+  padding-left: 8px;
+}
+
+.mat-table-sticky:first-child {
+  border-right: 1px solid #e0e0e0;
+}
+
+.mat-table-sticky:last-child {
+  border-left: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner .8s linear infinite;
+}
