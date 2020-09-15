@@ -1,7 +1,8 @@
 {
-  "name": "my-app",
-  "version": "0.0.0",
+  "name": "transactions-reports",
+  "version": "1.0.0",
   "scripts": {
+    "heroku-postbuild":"ng build --prod",
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
@@ -9,8 +10,14 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "engines": {
+    "node": "12.18.3",
+    "npm": "6.14.8"
+  },
   "private": true,
   "dependencies": {
+    "@angular/cli": "~10.1.0",
+    "@angular/compiler-cli": "~10.1.0",
     "@angular/animations": "~10.1.0",
     "@angular/cdk": "^10.2.0",
     "@angular/common": "~10.1.0",
@@ -27,7 +34,8 @@
     "bootstrap": "^4.5.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "typescript": "~4.0.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.0",
