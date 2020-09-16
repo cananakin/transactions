@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 const httpHeaders = new HttpHeaders({
   'Content-Type': 'application/json',
-  "Access-Control-Allow-Origin": '*'
+  "Access-Control-Allow-Origin": 'https://transactions-reports.herokuapp.com/'
 });
 
 const options = { headers: httpHeaders };
@@ -19,7 +19,7 @@ export class AuthServiceService {
 
   login(data): Observable<any> {
     
-    return this.http.post('https://sandbox-reporting.rpdpymnt.com/api/v3/merchant/user/login',data, options );
+    return this.http.post('https://cors-anywhere.herokuapp.com/https://sandbox-reporting.rpdpymnt.com/api/v3/merchant/user/login',data, options );
       
   }
 
