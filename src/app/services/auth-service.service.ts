@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 const httpHeaders = new HttpHeaders({
   'Content-Type': 'application/json',
-  "Access-Control-Allow-Origin": 'https://sandbox-reporting.rpdpymnt.com'
+  "Access-Control-Allow-Origin": '*'
 });
 
 const options = { headers: httpHeaders };
@@ -19,7 +19,7 @@ export class AuthServiceService {
 
   login(data): Observable<any> {
     
-    return this.http.post(this.httpUrl + '/api/v3/merchant/user/login',data, options );
+    return this.http.post('https://sandbox-reporting.rpdpymnt.com/api/v3/merchant/user/login',data, options );
       
   }
 

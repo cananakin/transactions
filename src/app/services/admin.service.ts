@@ -23,7 +23,7 @@ export class AdminService {
 
   transtionsReport(data): Observable<any> {
     
-    return this.http.post(this.httpUrl + '/api/v3/transactions/report',{
+    return this.http.post('https://sandbox-reporting.rpdpymnt.com/api/v3/transactions/report',{
       fromDate: "2015-07-01", 
       toDate: "2015-10-01", 
       merchant: 1,
