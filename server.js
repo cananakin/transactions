@@ -13,10 +13,11 @@ app.use((req, res, next) => {
     next();
   });
   
-  app.get('/api/v3/merchant/user/login', (req, res) => {
+  app.post('/api/v3/merchant/user/login', (req, res) => {
     request(
       { url: 'https://sandbox-reporting.rpdpymnt.com/api/v3/merchant/user/login' },
       (error, response, body) => {
+          console.log()
         if (error || response.statusCode !== 200) {
           return res.status(500).json({ type: 'error', message: err.message });
         }
