@@ -13,8 +13,6 @@ export class AdminService {
   httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
     "Access-Control-Allow-Origin": 'https://sandbox-reporting.rpdpymnt.com'
-    
-    //'Authorization': 'Bearer '+ this.token.getToken()
   });
   
   options = { headers: this.httpHeaders };
@@ -23,12 +21,7 @@ export class AdminService {
 
   transtionsReport(data): Observable<any> {
     
-    return this.http.post('https://sandbox-reporting.rpdpymnt.com/api/v3/transactions/report',{
-      fromDate: "2015-07-01", 
-      toDate: "2015-10-01", 
-      merchant: 1,
-      acquirer: 1
-    } );
+    return this.http.post('https://sandbox-reporting.rpdpymnt.com/api/v3/transactions/report',data);
       
   }
 
