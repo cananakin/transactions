@@ -9,7 +9,6 @@ import { TokenStorageService } from './token-storage.service';
 
 export class AdminService {
 
-  httpUrl = 'https://sandbox-reporting.rpdpymnt.com';
   httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
     "Access-Control-Allow-Origin": 'https://transactions-reports.herokuapp.com/'
@@ -21,25 +20,25 @@ export class AdminService {
 
   transtionsReport(data): Observable<any> {
     
-    return this.http.post('https://sandbox-reporting.rpdpymnt.com/api/v3/transactions/report',data);
+    return this.http.post('https://cors-anywhere.herokuapp.com/https://sandbox-reporting.rpdpymnt.com/api/v3/transactions/report',data);
       
   }
 
   transtionList(data): Observable<any> {
     
-    return this.http.post('/api/v3/transaction/list',data, this.options );
+    return this.http.post('https://cors-anywhere.herokuapp.com/https://sandbox-reporting.rpdpymnt.com/api/v3/transaction/list',data, this.options );
       
   }
   
   transtion(data): Observable<any> {
     
-    return this.http.post('/api/v3/transaction',data, this.options );
+    return this.http.post('https://cors-anywhere.herokuapp.com/https://sandbox-reporting.rpdpymnt.com/api/v3/transaction',data, this.options );
       
   }
 
   clients(data): Observable<any> {
     
-    return this.http.post('/api/v3/client',data, this.options );
+    return this.http.post('https://cors-anywhere.herokuapp.com/https://sandbox-reporting.rpdpymnt.com/api/v3/client',data, this.options );
       
   }
 }

@@ -14,7 +14,6 @@ const options = { headers: httpHeaders };
 })
 
 export class AuthServiceService {
-  httpUrl = 'https://sandbox-reporting.rpdpymnt.com';
   constructor(private http: HttpClient) { }
 
   login(data): Observable<any> {

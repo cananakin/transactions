@@ -3,36 +3,14 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 
-app.all('*', function(req, res, next) {
-    var origin = req.get('origin'); 
-    res.header('Access-Control-Allow-Origin', origin);
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
-
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header("Access-Control-Allow-Credentials", true);
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
     next();
-  });
+});
   
-  app.post('/api/v3/merchant/user/login', (req, res) => {
-    request(
-      { url: 'https://sandbox-reporting.rpdpymnt.com/api/v3/merchant/user/login' },
-      (error, response, body) => {
-          console.log()
-        if (error || response.statusCode !== 200) {
-          return res.status(500).json({ type: 'error', message: err.message });
-        }
-  
-        res.json(JSON.parse(body));
-      }
-    )
-  });
-
 app.use(express.static(__dirname + '/dist/my-app'));
 
 app.get('/*', function (req, res) {
